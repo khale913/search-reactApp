@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import axios from "axios";
+import unsplash from "../api/unsplash";
 import SearchBar from "./SearchBar";
 
 const App = () => {
+  // State manipulation
   const [images, setImages] = useState([]);
 
   const onSearchSubmit = async (term) => {
-    const response = await axios.get("https://api.unsplash.com/search/photos", {
+    // api fetch
+    const response = await unsplash.get("/search/photos", {
       params: { query: term },
-      headers: {
-        Authorization: "Client-ID HX8rfS-T3USzdE3dSJ1erUnijUR6Mt86760sSIvX5mw",
-      },
     });
+
+    // push api results to image state
     setImages(response.data.results);
   };
 
