@@ -7,6 +7,8 @@ const SearchBar = (props) => {
   const onFormSubmit = (e) => {
     e.preventDefault();
     props.onSubmit(inputTerm);
+    // empty input after 'submit'
+    setInputTerm("");
   };
 
   return (
